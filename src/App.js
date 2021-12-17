@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Tabs from './components/Tabs';
+// import Display from './components/Display';
 
 function App() {
+
+  const arrayTabs = [
+    {
+      tab: "Tab 1", //0
+      text: "Tab 1 content here",
+    },
+    {
+      tab: "Tab 2", //1
+      text: "Tab 2 content here",
+    },
+    {
+      tab: "Tab 3", //2
+      text: "Tab 3 content here",
+    },
+  ];
+
+
+  const [tabSelection, setTabSelection] = useState(arrayTabs);
+
+  const [activeTab, setActiveTab] =useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Tabs tabSelection = {tabSelection} setTabSelection = {setTabSelection} setActiveTab = {setActiveTab} activeTab = {activeTab}/>
+      <p className='contentBox'>{tabSelection[activeTab].text}</p>
     </div>
   );
 }
